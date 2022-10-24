@@ -11,7 +11,7 @@ import {
 import { useMutation } from "@apollo/client";
 
 import Auth from "../utils/auth";
-import { saveBook, searchGoogleBooks } from "../utils/API";
+import { searchGoogleBooks } from "../utils/API";
 import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
 
 import { QUERY_ME } from "../utils/queries";
@@ -36,7 +36,7 @@ function SearchBooks() {
     update(cache, { data: { addSavedBook } }) {
       try {
         // could potentially not exist yet, so wrap in a try...catch
-        let { me } = cache.readQuery({ query: QUERY_ME });
+        //let { me } = cache.readQuery({ query: QUERY_ME });
         cache.writeQuery({
           query: QUERY_ME,
           data: { me: { ...addSavedBook } },
@@ -107,13 +107,6 @@ function SearchBooks() {
       });
 
       console.log(data);
-      const updatedUser = data?.addSavedBook;
-
-      /* const response = await saveBook(bookToSave, token);
-
-      if (!response.ok) {
-        throw new Error("something went wrong!");
-      }*/
 
       // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
