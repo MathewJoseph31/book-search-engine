@@ -67,7 +67,7 @@ This assignment includes:
 
 ## Deployed Application
 
-https://booksearch-matt.herokuapp.com/
+https://booksearch-mat.herokuapp.com/
 
 ## MIT License
 
